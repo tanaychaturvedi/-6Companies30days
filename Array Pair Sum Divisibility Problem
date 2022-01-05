@@ -1,0 +1,27 @@
+bool canPair(vector<int> nums, int k) {
+        // Code here.
+        int sum=0;
+        int n=nums.size();
+    
+        unordered_map<int ,int> m;
+        for(int i=0;i<n;i++)
+        {
+          m[nums[i]%k]++;
+        }
+        
+        if(m[0]%2!=0)
+         return false;
+      
+      for(auto i:m)
+      {
+          int rem=i.first;
+          int freq=i.second;
+          if(rem!=0 && m[k-rem]!=freq)
+          return false;
+      }
+        
+        return true;
+        
+        
+        
+    }
